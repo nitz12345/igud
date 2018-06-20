@@ -1,0 +1,12 @@
+@import "../../../everest/assets/css/rtl.min.css";
+
+/* Your CSS code goes here
+-------------------------------------- */
+
+.page-id-61 .title-primary span, .page-id-383 .title-primary span{
+	color: #00003c;
+	border: 0 none transparent;
+}
+.page-id-63 .title-primary span{
+	border-width: 0 !important;
+}
