@@ -26,6 +26,11 @@ if ( ! function_exists( 'conventions' ) ) {
 		wp_localize_script( 'editCompany', 'ajax_object',
 			array( 'ajax_url' => admin_url( 'admin-ajax.php' ) ) );
 		
+		
+		wp_enqueue_style( 'responsive-style',
+			get_stylesheet_directory_uri() . '/assets/css/responsive.css',
+			false,
+			filemtime( get_stylesheet_directory() . '/assets/css/responsive.css' ) );
 	}
 	
 	function my_scripts() {
@@ -352,20 +357,20 @@ class top_companies extends WP_Widget {
 			$args = array(
 				'post_type'      => array( 'companies' ),
 				'posts_per_page' => '14',
-				'post_status' => array('publish'),
-				'orderby' => 'date',
-				'order' => 'DESC',
-				'meta_query' => array(
+				'post_status'    => array( 'publish' ),
+				'orderby'        => 'date',
+				'order'          => 'DESC',
+				'meta_query'     => array(
 					'relation' => 'AND',
 					array(
-						'key' => 'company_user',
-						'value' => false,
+						'key'     => 'company_user',
+						'value'   => false,
 						'compare' => '!=',
 					),
 					array(
-							'key' => 'promoted',
-							'value' => 1,
-							'compare' => '=='
+						'key'     => 'promoted',
+						'value'   => 1,
+						'compare' => '=='
 					)
 				)
 			);
@@ -377,14 +382,14 @@ class top_companies extends WP_Widget {
 			if ( $top_companies->have_posts() ) {
 				while ( $top_companies->have_posts() ) {
 					$top_companies->the_post();
-					if(has_post_thumbnail()){
+					if ( has_post_thumbnail() ) {
 						$thumbnail = get_the_post_thumbnail_url();
-					} else{
-						$terms = get_the_terms(get_the_ID(), 'company_category');
-						if($terms){
-							foreach($terms as $term){
-								if($term->parent === 0){
-									$thumbnail = get_field('bg_img', $term);
+					} else {
+						$terms = get_the_terms( get_the_ID(), 'company_category' );
+						if ( $terms ) {
+							foreach ( $terms as $term ) {
+								if ( $term->parent === 0 ) {
+									$thumbnail = get_field( 'bg_img', $term );
 									break;
 								}
 							}
@@ -394,35 +399,30 @@ class top_companies extends WP_Widget {
 					if ( $i == 0 || $i % 2 == 0 ) {
 						echo "<div class='putc-slide'>";
 					} ?>
-					<a href="<?php the_permalink() ?>">
-						<div class="company-container" style="background-image:url(<?php echo $thumbnail; ?>)">
-							<?php echo wp_get_attachment_image(get_field( 'logo' ), 'medium', false, array('class' => 'company-logo')); ?>
-							<div class="company-details">
-								<span class="company_name"><?php the_title() ?></span>
-								<span class="company_phone"><?php the_field( 'phone' ) ?></span>
-								<span class="company_address"><?php the_field( 'address' ) ?></span>
-								<div class="company_bottom-bar">
-									<div class="pull-right">
-										<a href="https://twitter.com/home?status=<?php the_permalink() ?>" class="company-social-icon"><img
-													src="<?php echo get_stylesheet_directory_uri() . "/assets/images/twitter.png" ?>"> </a>
-										<a href="whatsapp://send?text=<?php the_permalink(); ?>" class="company-social-icon"><img
-													src="<?php echo get_stylesheet_directory_uri() . "/assets/images/whatsapp.png" ?>"> </a>
-										<a href="https://www.facebook.com/sharer/sharer.php?u=<?php the_permalink() ?>" class="company-social-icon"><img
-													src="<?php echo get_stylesheet_directory_uri() . "/assets/images/facebook.png" ?>"> </a>
-										<a href="https://plus.google.com/share?url=<?php the_permalink() ?>" class="company-social-icon"><img
-													src="<?php echo get_stylesheet_directory_uri() . "/assets/images/google.png" ?>"> </a>
-										<a href="https://www.linkedin.com/shareArticle?mini=true&url=<?php the_permalink() ?>&title=&summary=&source=" class="company-social-icon"><img
-													src="<?php echo get_stylesheet_directory_uri() . "/assets/images/linkedin.png" ?>"> </a>
-										<a href="mailto:?body=<?php the_permalink() ?>" class="company-social-icon">
-											<img src="<?php echo get_stylesheet_directory_uri() . "/assets/images/email.png" ?>">
-										</a>
-									</div>
+					<div onclick="location.href='<?php the_permalink() ?>';" class="company-container"
+							 style="background-image:url(<?php echo $thumbnail; ?>)">
+						<?php echo wp_get_attachment_image( get_field( 'logo' ), 'medium', false, array( 'class' => 'company-logo' ) ); ?>
+						<div class="company-details">
+							<a title="<?php the_title() ?>" href="<?php the_permalink() ?>"><span
+										class="company_name"><?php the_title() ?></span></a>
+							<span class="company_phone"><?php the_field( 'phone' ) ?></span>
+							<span class="company_address"><?php the_field( 'address' ) ?></span>
+							<div class="company_bottom-bar">
+								<div class="pull-right">
+									<a href="whatsapp://send?text=<?php the_permalink(); ?>" class="company-social-icon whatsapp"><img
+												src="<?php echo get_stylesheet_directory_uri() . "/assets/images/whatsapp.png" ?>"> </a>
+									<a href="https://www.facebook.com/sharer/sharer.php?u=<?php the_permalink() ?>"
+										 class="company-social-icon"><img
+												src="<?php echo get_stylesheet_directory_uri() . "/assets/images/facebook.png" ?>"> </a>
+									<a href="mailto:?body=<?php the_permalink() ?>" class="company-social-icon">
+										<img src="<?php echo get_stylesheet_directory_uri() . "/assets/images/email.png" ?>">
+									</a>
 								</div>
 							</div>
 						</div>
-					</a>
+					</div>
 					<?php
-					$i++;
+					$i ++;
 					if ( $i % 2 == 0 || $i == $top_companies->post_count ) {
 						echo "</div>";
 					}
@@ -443,7 +443,17 @@ class top_companies extends WP_Widget {
 						rtl: true,
 						speed: 500,
 						slidesToShow: 3,
-						slidesToScroll: 1
+						slidesToScroll: 1,
+						responsive: [
+							{
+								breakpoint: 768,
+								settings: {
+									slidesToShow: 1,
+									slidesToScroll: 1,
+									infinite: true
+								}
+							}
+						]
 					});
 				})
 			})
@@ -495,13 +505,19 @@ class pu__leading_companies extends WP_Widget {
 					'post_type'      => array( 'companies' ),
 					'posts_per_page' => '5',
 					'post_status'    => 'publish',
-					'orderby' => 'date',
-					'order' => 'DESC',
-					'meta_query' => array(
+					'orderby'        => 'modified',
+					'order'          => 'DESC',
+					'meta_query'     => array(
+						'relation' => 'AND',
 						array(
-							'key' => 'company_user',
-							'value' => false,
+							'key'     => 'company_user',
+							'value'   => false,
 							'compare' => '!=',
+						),
+						array(
+							'key'     => 'five_leading_companies',
+							'value'   => 1,
+							'compare' => '=='
 						)
 					)
 				);
@@ -512,47 +528,7 @@ class pu__leading_companies extends WP_Widget {
 				if ( $leading_companies->have_posts() ) {
 					while ( $leading_companies->have_posts() ) {
 						$leading_companies->the_post();
-						if(has_post_thumbnail()){
-							$thumbnail = get_the_post_thumbnail_url();
-						} else{
-							$terms = get_the_terms(get_the_ID(), 'company_category');
-							if($terms){
-								foreach($terms as $term){
-									if($term->parent === 0){
-										$thumbnail = get_field('bg_img', $term);
-										break;
-									}
-								}
-							}
-						}
-						?>
-						<div class="col-pu-5">
-							<a href="<?php the_permalink() ?>">
-								<div class="company-container company-container-full" style="background-image:url(<?php echo $thumbnail ?>)">
-									<?php echo wp_get_attachment_image(get_field( 'logo' ), 'medium', false, array('class' => 'company-logo')); ?>
-									<div class="company-details">
-										<span class="company_name"><?php the_title() ?></span>
-										<span class="company_phone"><?php the_field( 'phone' ) ?></span>
-										<span class="company_address"><?php the_field( 'address' ) ?></span>
-										<div class="company_bottom-bar">
-											<div class="pull-right">
-												<a href="https://twitter.com/home?status=<?php the_permalink() ?>" class="company-social-icon"><img
-															src="<?php echo get_stylesheet_directory_uri() . "/assets/images/twitter.png" ?>"> </a>
-												<a href="whatsapp://send?text=<?php the_permalink(); ?>" class="company-social-icon"><img
-															src="<?php echo get_stylesheet_directory_uri() . "/assets/images/whatsapp.png" ?>"> </a>
-												<a href="https://www.facebook.com/sharer/sharer.php?u=<?php the_permalink() ?>" class="company-social-icon"><img
-															src="<?php echo get_stylesheet_directory_uri() . "/assets/images/facebook.png" ?>"> </a>
-												<a href="https://plus.google.com/share?url=<?php the_permalink() ?>" class="company-social-icon"><img
-															src="<?php echo get_stylesheet_directory_uri() . "/assets/images/google.png" ?>"> </a>
-												<a href="https://www.linkedin.com/shareArticle?mini=true&url=<?php the_permalink() ?>&title=&summary=&source=" class="company-social-icon"><img
-															src="<?php echo get_stylesheet_directory_uri() . "/assets/images/linkedin.png" ?>"> </a>
-											</div>
-										</div>
-									</div>
-								</div>
-							</a>
-						</div>
-						<?php
+						get_template_part( 'content/company', 'card' );
 					}
 				} else {
 					// no posts found
@@ -631,7 +607,7 @@ function matat_login() {
 	$result = array(
 		'success' => true,
 	);
-	$param = array();
+	$param  = array();
 	parse_str( $_POST['data'], $param );
 	
 	$creds                  = array();
@@ -640,14 +616,14 @@ function matat_login() {
 	$creds['remember']      = true;
 	$user                   = wp_signon( $creds, false );
 	if ( is_wp_error( $user ) ) {
-		$error_string = $user->get_error_message();
+		$error_string      = $user->get_error_message();
 		$result['success'] = false;
 		$result['message'] = $error_string;
 	} else {
-		$url = get_permalink( get_user_meta( $user->ID, 'companyId', true ) );
+		$url               = get_permalink( get_user_meta( $user->ID, 'companyId', true ) );
 		$result['message'] = $url;
 	}
-	echo json_encode($result, JSON_UNESCAPED_UNICODE);
+	echo json_encode( $result, JSON_UNESCAPED_UNICODE );
 	die();
 }
 
@@ -687,21 +663,22 @@ function wpcf7_add_acf_company_name_handler() {
 	return "<input type='text' value='" . get_the_title() . "' name='acf_company_name'>";
 }
 
-function in_assoc($needle, $arr)
-{
-	foreach($arr as $item){
-		if($needle === $item->term_id)
+function in_assoc( $needle, $arr ) {
+	foreach ( $arr as $item ) {
+		if ( $needle === $item->term_id ) {
 			return true;
+		}
 	}
+	
 	return false;
 }
 
 function getSubCategories( $current_term = false, $select = false ) {
 	if ( $_POST['chosen_cat'] ) {
-		$select = $_POST['select'];
+		$select       = $_POST['select'];
 		$current_term = $_POST['chosen_cat'];
 	}
-	$sub_terms = get_terms( array(
+	$sub_terms         = get_terms( array(
 		'taxonomy'   => 'company_category',
 		'hide_empty' => false,
 		'parent'     => $current_term
@@ -711,16 +688,18 @@ function getSubCategories( $current_term = false, $select = false ) {
 			return $term;
 		}
 	}, get_the_terms( get_the_ID(), 'company_category' ) ) );
-	if($select) { ?>
-			<?php foreach ( $sub_terms as $sub ) {
-				$checked = in_assoc( $sub->term_id, $current_sub_terms ) ? "checked" : ""; ?>
-				<span><input title="<?php echo $sub->name ?>" type="checkbox" name="sub-category[]" value="<?php echo $sub->term_id ?>" <?php echo $checked ?> /><?php echo $sub->name ?></span>
-			<?php } ?>
-	<?php } else{
+	if ( $select ) { ?>
+		<?php foreach ( $sub_terms as $sub ) {
+			$checked = in_assoc( $sub->term_id, $current_sub_terms ) ? "checked" : ""; ?>
+			<span><input title="<?php echo $sub->name ?>" type="checkbox" name="sub-category[]"
+									 value="<?php echo $sub->term_id ?>" <?php echo $checked ?> /><?php echo $sub->name ?></span>
+		<?php } ?>
+	<?php } else {
 		foreach ( $current_sub_terms as $sub ) {
 			echo $sub->name;
-			if($sub != end($current_sub_terms))
+			if ( $sub != end( $current_sub_terms ) ) {
 				echo ", ";
+			}
 		}
 	} ?>
 	<?php if ( $_POST['action'] ) {
@@ -762,23 +741,23 @@ add_action( 'elementor_pro/forms/validation', function ( $record, $ajax_handler 
 			$ajax_handler->add_error( $field['id'], 'כתובת האימייל קיימת במאגר. אנא בחר כתובת אימייל אחרת' );
 		}
 		
-		$fields = $record->get_field([
+		$fields = $record->get_field( [
 			'id' => 'password'
 		] );
 		
 		$pwd = current( $fields )['value'];
 		
-		if (strlen($pwd) < 8 || !preg_match("#[a-zA-Z]+#", $pwd)) {
+		if ( strlen( $pwd ) < 8 || ! preg_match( "#[a-zA-Z]+#", $pwd ) ) {
 			$ajax_handler->add_error( 'password', 'הסיסמה חייבת להכיל לפחות 8 תווים ולפחות אות אחת' );
 		}
 		
-		$fields = $record->get_field([
+		$fields = $record->get_field( [
 			'id' => 'auth_pass'
 		] );
 		
 		$authPwd = current( $fields )['value'];
 		
-		if ($authPwd != $pwd) {
+		if ( $authPwd != $pwd ) {
 			$ajax_handler->add_error( 'auth_pass', 'הסיסמאות אינן תואמות' );
 		}
 	}
@@ -810,7 +789,6 @@ function bennerExcerpt( $limit ) {
 // Load our function when hook is set
 add_action( 'pre_get_posts', 'company_category_query' );
 
-// Create a function to excplude some categories from the main query
 function company_category_query( $query ) {
 	// Check if on frontend and main query is modified
 	if ( ! is_admin() && $query->is_main_query() &&
@@ -845,14 +823,14 @@ function company_category_query( $query ) {
 		$query->set( 'orderby', 'meta_value' );
 		$query->set( 'order', 'DESC' );
 	}
-	if($query->is_post_type_archive( 'companies' ) && !is_admin()){
+	if ( $query->is_post_type_archive( 'companies' ) && ! is_admin() ) {
 		$query->set( 'meta_query', array(
 			array(
-				'key' => 'company_user',
-				'value' => false,
+				'key'     => 'company_user',
+				'value'   => false,
 				'compare' => '!=',
 			)
-		));
+		) );
 	}
 }
 
@@ -878,7 +856,7 @@ function bright_background_pages( $classes ) {
  *
  * @return   array                The updated array of buttons that exludes some items
  */
-if(!is_admin()) {
+if ( ! is_admin() ) {
 	add_filter( 'mce_buttons', 'jivedig_remove_tiny_mce_buttons_from_editor' );
 }
 function jivedig_remove_tiny_mce_buttons_from_editor( $buttons ) {
@@ -918,7 +896,7 @@ function jivedig_remove_tiny_mce_buttons_from_editor( $buttons ) {
  *
  * @return   array                The updated array of buttons that exludes some items
  */
-if(!is_admin()){
+if ( ! is_admin() ) {
 	add_filter( 'mce_buttons_2', 'jivedig_remove_tiny_mce_buttons_from_kitchen_sink' );
 }
 function jivedig_remove_tiny_mce_buttons_from_kitchen_sink( $buttons ) {
@@ -947,39 +925,39 @@ function jivedig_remove_tiny_mce_buttons_from_kitchen_sink( $buttons ) {
 
 function loadMoreCompanies() {
 	$archive = $_POST['archive'];
-	$offset    = $_POST['offset'];
-	$tax_id = $_POST['taxId'];
-	$args = array(
-		'post_type' => 'companies',
+	$offset  = $_POST['offset'];
+	$tax_id  = $_POST['taxId'];
+	$args    = array(
+		'post_type'      => 'companies',
 		'posts_per_page' => 15,
-		'offset' => $offset,
-		'meta_key' => 'company_user',
-		'orderby' => 'meta_value',
-		'order' => 'DESC',
-		'post_status' => 'publish'
+		'offset'         => $offset,
+		'meta_key'       => 'company_user',
+		'orderby'        => 'date',
+		'order'          => 'DESC',
+		'post_status'    => 'publish'
 	);
-	if($tax_id){
+	if ( $tax_id ) {
 		$args['tax_query'] = array(
 			array(
 				'taxonomy' => 'company_category',
 				'field'    => 'term_id',
-				'terms'    => array($tax_id),
+				'terms'    => array( $tax_id ),
 			),
 		);
 	}
-	if($archive){
+	if ( $archive ) {
 		$args['meta_query'] = array(
 			array(
-				'key' => 'company_user',
-				'value' => false,
+				'key'     => 'company_user',
+				'value'   => false,
 				'compare' => '!=',
 			)
 		);
 	}
-	$new_query = new WP_Query($args);
+	$new_query = new WP_Query( $args );
 	ob_start();
 	$notPaidCount = 0;
-	if($new_query->have_posts()) {
+	if ( $new_query->have_posts() ) {
 		while ( $new_query->have_posts() ) : $new_query->the_post();
 			$paid     = get_field( 'company_user' );
 			$term     = get_top_category();
@@ -989,7 +967,7 @@ function loadMoreCompanies() {
 			<?php } ?>
 			<div class="<?php echo $colClass; ?>">
 				<?php $backgroundImg = ( $paid && has_post_thumbnail() ) ? get_the_post_thumbnail_url() : wp_get_attachment_image_src( get_field( "company_cat_img", $term ), 'medium' )[0]; ?>
-				<div class="company-container company-container-full"
+				<div class="company-container company-container-full" data-href="<?php the_permalink() ?>"
 						 style="background-image:url(<?php echo $backgroundImg ?>)">
 					<?php if ( ! $paid ) {
 						$notPaidCount ++; ?>
@@ -1011,18 +989,11 @@ function loadMoreCompanies() {
 												src="<?php echo get_stylesheet_directory_uri() . "/assets/images/share.png" ?>"></a>
 								<?php } ?>
 								<div class="sharing-options">
-									<a href="https://twitter.com/home?status=<?php the_permalink() ?>" class="company-social-icon"><img
-												src="<?php echo get_stylesheet_directory_uri() . "/assets/images/twitter.png" ?>"> </a>
-									<a href="whatsapp://send?text=<?php the_permalink(); ?>" class="company-social-icon"><img
+									<a href="whatsapp://send?text=<?php the_permalink(); ?>" class="company-social-icon whatsapp"><img
 												src="<?php echo get_stylesheet_directory_uri() . "/assets/images/whatsapp.png" ?>"> </a>
 									<a href="https://www.facebook.com/sharer/sharer.php?u=<?php the_permalink() ?>"
 										 class="company-social-icon"><img
 												src="<?php echo get_stylesheet_directory_uri() . "/assets/images/facebook.png" ?>"> </a>
-									<a href="https://plus.google.com/share?url=<?php the_permalink() ?>" class="company-social-icon"><img
-												src="<?php echo get_stylesheet_directory_uri() . "/assets/images/google.png" ?>"> </a>
-									<a href="https://www.linkedin.com/shareArticle?mini=true&url=<?php the_permalink() ?>&title=&summary=&source="
-										 class="company-social-icon"><img
-												src="<?php echo get_stylesheet_directory_uri() . "/assets/images/linkedin.png" ?>"> </a>
 									<a href="mailto:?body=<?php the_permalink() ?>" class="company-social-icon">
 										<img src="<?php echo get_stylesheet_directory_uri() . "/assets/images/email.png" ?>">
 									</a>
@@ -1036,36 +1007,38 @@ function loadMoreCompanies() {
 				</div>
 			<?php } ?>
 		<?php endwhile;
-	} else{
+	} else {
 		$ret['error'] = 'done';
 	}
 	$ret['result'] = ob_get_clean();
 	ob_end_clean();
-	echo json_encode($ret);
+	echo json_encode( $ret );
 	die();
 }
 
 add_action( 'wp_ajax_loadMoreCompanies', 'loadMoreCompanies' );
 add_action( 'wp_ajax_nopriv_loadMoreCompanies', 'loadMoreCompanies' );
 
-function getBackgroundOptions(){
+function getBackgroundOptions() {
 	$term_id = $_POST['chosen_cat'];
-	$images = get_field('background_images_options', 'term_' . $term_id);
-	echo json_encode($images, JSON_FORCE_OBJECT);
+	$images  = get_field( 'background_images_options', 'term_' . $term_id );
+	echo json_encode( $images, JSON_FORCE_OBJECT );
 	die();
 }
+
 add_action( 'wp_ajax_getBackgroundOptions', 'getBackgroundOptions' );
 add_action( 'wp_ajax_nopriv_getBackgroundOptions', 'getBackgroundOptions' );
 
 function get_top_category() {
 	global $post;
-	$cats = get_the_terms($post, 'company_category'); // category object
+	$cats = get_the_terms( $post, 'company_category' ); // category object
 	
-	foreach($cats as $cat) {
-		if ($cat->parent == 0) {
+	foreach ( $cats as $cat ) {
+		if ( $cat->parent == 0 ) {
 			return $cat;
 		}
 	}
+	
 	return false;
 }
 
@@ -1073,4 +1046,26 @@ function removeEditLink( $string ) {
 //	echo apply_filters( 'pojo_button_post_edit', '<a href="' . $edit_post_link . '" class="button size-small edit-link"><i class="fa fa-pencil"></i> ' . __( 'Edit', 'pojo' ) . '</a>', $edit_post_link, $id, $context );
 	return;
 }
+
 add_filter( 'pojo_button_post_edit', 'removeEditLink', 10, 1 );
+
+function checkCompanyIdExistance() {
+	$companyId     = $_POST['company_id'];
+	$companyPostId = (int) $_POST['company_post_id'];
+	$companies     = get_posts( array(
+		'post_type'      => 'companies',
+		'posts_per_page' => - 1
+	) );
+	foreach ( $companies as $company ) {
+		$id = get_field( 'company_id', $company );
+		if ( $companyPostId !== $company->ID && $companyId === $id ) {
+			echo false;
+			die();
+		}
+	}
+	echo true;
+	die();
+}
+
+add_action( 'wp_ajax_checkCompanyIdExistance', 'checkCompanyIdExistance' );
+add_action( 'wp_ajax_nopriv_checkCompanyIdExistance', 'checkCompanyIdExistance' );

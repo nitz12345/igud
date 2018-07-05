@@ -1,0 +1,102 @@
+.hide-on-desktop{
+	display: none;
+}
+@media screen and (max-width: 767px) {
+	html, body{
+		max-width: 100%;
+		overflow-x: hidden;
+	}
+	.hide-on-desktop{
+		display: block;
+	}
+	.hide-on-mobile{
+		display: none;
+	}
+	.header-inner-width p {
+		font-size: 55px;
+		margin-bottom: 20px;
+	}
+	.header-inner-width h1{
+		font-size: 40px;
+		line-height: 1.2;
+		margin-bottom: 30px;
+	}
+	#page-header .title-primary span{
+		padding-left: 0;
+		padding-right: 0;
+	}
+	.pu-leading-companies-content .col-pu-5{
+		width: 100%;
+	}
+	.elementor-grid.elementor-grid-3 .elementor-grid-item{
+		width: 100%;
+	}
+	.convention-image{
+		text-align: center;
+		padding-right: 0;
+		margin-top: 15px;
+	}
+	.convention-details{
+		display: none;
+	}
+	.banner-wrap h1:after, .banner-wrap h1:before{
+		display: none;
+	}
+	#header .container, .elementor-element-ce1be82 .container, .elementor-element-0d3677d .container{
+		padding-left: 10px;
+		padding-right: 10px;
+	}
+	#header{
+		position: relative !important;
+	}
+	.logo-img a > img{
+		width: 250px;
+	}
+	div#tax-container h1.entry-title{
+		font-size: 30px;
+		margin: 10px 0;
+	}
+	.page-title.tax-page-title .container:before{
+		width: 25px;
+		height: 25px;
+		top: -15px;
+	}
+	img#tax-logo{
+		display: none;
+	}
+	.single-companies .page-title{
+		position: relative;
+	}
+	.single-companies .page-title .container{
+		min-height: 0;
+	}
+	.single-companies .page-title h1{
+		font-size: 30px;
+	}
+	.single-companies .page-title h2{
+		margin-top: 5px;
+		margin-bottom: 5px;
+	}
+	#company-logo{
+		max-width: 80px;
+		top: -50px;
+	}
+	.pull-left div{
+		display: block;
+		margin-left: 0;
+		margin-bottom: 8px;
+	}
+	body.rtl .company-top-info .pull-left,
+	body.rtl .company-top-info .pull-right,
+	body.rtl .company-menu-info .pull-right,
+	body.rtl .company-menu-info .pull-left{
+		float: none !important;
+	}
+	.company-menu{
+		display: none;
+	}
+	.detail-title, .detail-content{
+		display: block;
+		width: 100%;
+	}
+}

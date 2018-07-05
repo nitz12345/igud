@@ -307,7 +307,7 @@ function contractsHomepageList() {
 function buildContractsList() {
 	ob_start(); ?>
 	<div id="contracts">
-		<div class="contracts-header contracts-row">
+		<div class="contracts-header contracts-row hide-on-mobile">
 			<div class="contract-publisher contract-column">מפרסם</div>
 			<div class="contract-field contract-column">תחום</div>
 			<div class="contract-name contract-column">שם המכרז</div>
@@ -333,12 +333,15 @@ function buildContractsList() {
 			$the_query->the_post();
 			$contract_fields = get_fields(); ?>
 			<div class="contracts-content contracts-row">
-				<div class="contract-publisher contract-column"><?php echo $contract_fields['publisher']; ?></div>
-				<div class="contract-field contract-column"><?php echo $contract_fields['contract_field']; ?></div>
-				<div class="contract-name contract-column"><a href="<?php the_permalink() ?>"
-																											title="<?php the_title() ?>"><?php the_title(); ?></a></div>
-				<div class="contract-number contract-column"><?php echo $contract_fields['contract_number']; ?></div>
-				<div class="contract-close contract-column"><?php echo $contract_fields['contract_finish']; ?></div>
+				<div class="contract-publisher contract-column"><span class="hide-on-desktop">מפרסם: </span><?php echo $contract_fields['publisher']; ?></div>
+				<div class="contract-field contract-column"><span class="hide-on-desktop">תחום: </span><?php echo $contract_fields['contract_field']; ?></div>
+				<div class="contract-name contract-column">
+					<a href="<?php the_permalink() ?>" title="<?php the_title() ?>">
+						<span class="hide-on-desktop">שם המכרז: </span><?php the_title(); ?>
+					</a>
+				</div>
+				<div class="contract-number contract-column"><span class="hide-on-desktop">מספר: </span><?php echo $contract_fields['contract_number']; ?></div>
+				<div class="contract-close contract-column"><span class="hide-on-desktop">מכרז ייסגר: </span><?php echo $contract_fields['contract_finish']; ?></div>
 			</div>
 		<?php }
 		wp_reset_postdata(); ?>

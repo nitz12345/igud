@@ -298,7 +298,7 @@ $current_terms = current($current_terms);
 							$staff = get_field( 'staff_' . $i );
 							if ( $staff['staff_name'] ) { ?>
 								<div class="col-md-3">
-									<div class="staff-placeholders view-mode">
+									<div class="staff-placeholders view-mode <?php echo $staff['staff_image'] ? '' : 'no-image' ?>">
 										<?php echo wp_get_attachment_image( $staff['staff_image'], 'medium' ); ?>
 										<div class="pu-image-title">
 													<span class="name-title">
@@ -373,7 +373,9 @@ $current_terms = current($current_terms);
 					<hr>
 				</div>
 				<div class="row">
-					<?php echo do_shortcode( '[contact-form-7 id="458"]' ) ?>
+					<div class="col-md-12">
+						<?php echo do_shortcode( '[contact-form-7 id="458"]' ) ?>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -466,5 +468,10 @@ $current_terms = current($current_terms);
 		
 		</div>
 	</div>
+	<?php if(!$paid){ ?>
+		<div class="company-section">
+			<?php echo do_shortcode('[elementor-template id="481"]'); ?>
+		</div>
+	<?php } ?>
 
 </article>

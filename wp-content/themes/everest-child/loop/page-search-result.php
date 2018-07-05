@@ -2,75 +2,102 @@
 /**
  * Template Name: search
  */
-if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+} // Exit if accessed directly
 get_header();
 $search_term = $_GET['search_term'];
 $search_type = $_GET['search_type'];
 $search_area = $_GET['search_area'];
 // WP_Query arguments
 $args = array(
-	'post_type'              => array( 'companies' ),
-	'post_status'            => array( 'publish' ),
+	'post_type'   => array( 'companies' ),
+	'post_status' => array( 'publish' ),
 );
-if ($search_type == 'company'){
-    $args['tax_query']= array(
-		    array(
-			    'taxonomy' => 'company_category',
-			    'field'    => 'name',
-			    'terms'    => $search_term,
-		    ),
-    );
-} else{
-    $args['s']=$search_term;
+if ( $search_area > 0 ) {
+	$args['tax_query'] = array(
+		array(
+			'taxonomy' => 'company_area',
+			'field'    => 'term_id',
+			'terms'    => $search_area,
+		),
+	);
 }
-if (!$search_area==0) {
-	if ( $search_type == 'company' ) {
-		$args['tax_query'][] = array(
-			'relation' => 'AND',
-			array(
-				'taxonomy' => 'company_area',
-				'field'    => 'term_id',
-				'terms'    => $search_area,
-			),
-		);
-	} else {
-		$args['tax_query'] = array(
-				array(
-					'taxonomy' => 'company_area',
-					'field'    => 'term_id',
-					'terms'    => $search_area,
-				),
-		);
+if ( $search_type == 'companyId' ) {
+	$args['meta_query'] = array(
+		'relation' => 'AND',
+		array(
+			'key'     => 'company_id',
+			'value'   => $search_term,
+			'compare' => '==',
+		)
+	);
+} else {
+	$termIds = array_map( function ( \WP_Term $term ) {
+		return $term->term_id;
+	}, get_terms( [
+		'name__like' => $search_term,
+	] ) );
+	
+	/*$results = $wpdb->get_results( "
+			SELECT posts.ID
+			FROM $wpdb->posts as posts
+			WHERE ((posts.post_type IN ( 'companies' ))
+			AND posts.post_status != 'trash'
+			AND posts.post_title LIKE '%{$search_term}%')
+			UNION
+			SELECT terms.object_id
+			FROM $wpdb->term_relationships as terms
+			WHERE (terms.term_taxonomy_id IN ($termIds))",
+		ARRAY_N
+	);*/
+	
+	$termIds     = implode( ',', $termIds );
+	$search_term = esc_sql( $search_term );
+	$query       = "SELECT posts.ID
+			FROM $wpdb->posts as posts
+			WHERE (posts.post_title LIKE '%$search_term%'
+			AND posts.post_type IN ( 'companies' )
+			AND posts.post_status != 'trash')
+			UNION
+			SELECT postmeta.post_id
+			FROM $wpdb->postmeta as postmeta
+			WHERE (postmeta.meta_key = 'company_tags' AND postmeta.meta_value LIKE '%$search_term%')";
+	
+	if ( $termIds ) {
+		$query .= "UNION
+		SELECT terms.object_id
+		FROM $wpdb->term_relationships as terms
+		WHERE terms.term_taxonomy_id IN ($termIds)";
 	}
+	
+	$results = $wpdb->get_results( $query, ARRAY_N );
+	
+	foreach ( $results as $id ) {
+		$posts[] = current( $id );
+	}
+	
+	$args['post__in'] = $posts;
 }
-// The Query
+
+
 $search = new WP_Query( $args );
 
-// The Loop
 if ( $search->have_posts() ) {
+	$notPaidCount = 0;
 	while ( $search->have_posts() ) {
-		$search->the_post(); ?>
-        <div class="col-md-3">
-            <a href="<?php the_permalink() ?>">
-                <div class="company-container" style="background-image:url(<?php the_post_thumbnail_url() ?>)">
-	                	<?php echo wp_get_attachment_image(get_field( 'logo' ), 'medium', false, array('class' => 'company-logo')); ?>
-                    <div class="company-details">
-                        <span class="company_name"><?php the_title() ?></span>
-                        <span class="company_phone"><?php the_field('phone') ?></span>
-                        <span class="company_address"><?php the_field('address') ?></span>
-                        <div class="company_bottom-bar">
-                            <div class="pull-right">
-                                <a href="<?php the_field('twitter') ?>" class="company-social-icon"><img src="<?php echo get_stylesheet_directory_uri()."/assets/images/twitter.png" ?>"> </a>
-                                <a href="<?php the_field('whatsapp') ?>" class="company-social-icon"><img src="<?php echo get_stylesheet_directory_uri()."/assets/images/whatsapp.png" ?>"> </a>
-                                <a href="<?php the_field('facebook') ?>" class="company-social-icon"><img src="<?php echo get_stylesheet_directory_uri()."/assets/images/facebook.png" ?>"> </a>
-                                <a href="<?php the_field('google') ?>" class="company-social-icon"><img src="<?php echo get_stylesheet_directory_uri()."/assets/images/google.png" ?>"> </a>
-                                <a href="<?php the_field('linkedin') ?>" class="company-social-icon"><img src="<?php echo get_stylesheet_directory_uri()."/assets/images/linkedin.png" ?>"> </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </a>
-        </div>
+		$search->the_post();
+		$paid = get_field( 'company_user' );
+		if(!$paid && $notPaidCount%2 == 0){ ?>
+			<div class='col-pu-5'>
+		<?php }
+		if(!$paid){
+			$notPaidCount++;
+		}
+		get_template_part('content/company', 'card');
+		if(!$paid && $notPaidCount%2 == 0){ ?>
+			</div>
+		<?php } ?>
 	<?php }
 } else {
 	echo "לא נמצאו תוצאות התואמות את החיפוש";

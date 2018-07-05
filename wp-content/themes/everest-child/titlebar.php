@@ -20,7 +20,6 @@ if ( ! empty( $height_header ) ) {
 				<div class="title-primary magazine-post-header">
 					<div>
 						<h1><?php echo $title; ?></h1>
-						<?php pojo_breadcrumbs(); ?>
 					</div>
 				</div>
 			<?php }else{ ?>

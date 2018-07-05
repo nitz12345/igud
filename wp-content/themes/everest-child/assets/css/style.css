@@ -65,7 +65,7 @@
 	font-size: 36px;
 	color: #fff;
 	line-height: 1.4;
-	margin: 10px 0 0;
+	margin: 5px 0 5px;
 }
 .magazine-post-header #breadcrumbs{
 	font-size: 18px;
@@ -465,6 +465,12 @@ body.bright-background .title-primary span {
 .staff-placeholders.view-mode{
 	height: 292px;
 }
+.staff-image-wrapper.no-image,
+.staff-placeholders.view-mode.no-image{
+	background-size: contain;
+	background-position: center top;
+	background-image: url(../images/male.png);
+}
 .managers img{
 	width: 100%;
 	height: auto;
@@ -727,8 +733,29 @@ ol > li > ol > li > ol > li:before {
 	margin-left: 10px;
 	white-space: nowrap;
 }
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+	-webkit-appearance: none;
+	margin: 0;
+}
+.company-social-icon.whatsapp{
+	display: none;
+}
+.page-title.tax-page-title .container:before{
+	transform: rotatez(-45deg);
+	z-index: 100;
+	right: 22.5%;
+	position: absolute;
+	top: -28px;
+	content: "";
+	width: 50px;
+	height: 50px;
+}
 
 @media screen and (max-width: 767px){
+	.company-social-icon.whatsapp{
+		display: inline-block;
+	}
 	.contracts-row, .contract-details-row{
 		display: block;
 	}

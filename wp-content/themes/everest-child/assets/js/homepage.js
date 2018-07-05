@@ -1,5 +1,11 @@
 (function ($) {
 	$(document).ready(function () {
+		$('.search-by').each(function () {
+			$(this).click(function (e) {
+				var text = $(this).attr('data-text');
+				$('[name="search_term"]').attr('placeholder', text);
+			});
+		});
 		$('.homepage-list-grid').slick({
 			rtl: true,
 			speed: 500,

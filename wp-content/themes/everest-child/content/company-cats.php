@@ -13,7 +13,7 @@
                 <form action="/search-result" class="search-form">
                     <div class="row">
                         <div class="col-md-7">
-                            <input type="text" name="search_term" placeholder="שם חברה או תחום פעילות, חיפוש חופשי">
+                            <input type="text" name="search_term" placeholder="חיפוש חופשי">
                         </div>
                         <div class="col-md-3">
                             <select name="search_area">
@@ -34,10 +34,10 @@
                         </div>
                     </div>
                     <div class="search-by">
-                        <input type="radio" name="search_type" id="company" value="company">
-                        <label for="company">חיפוש חברה</label>
-                            <input type="radio" name="search_type" id="name" value="name" checked>
-                        <label for="name">חיפוש לפי שם</label>
+                        <input type="radio" name="search_type" id="free" value="free" checked>
+                        <label class="search-by" for="free" data-text="חיפוש חופשי">חיפוש חופשי</label>
+                        <input type="radio" name="search_type" id="companyId" value="companyId">
+                        <label class="search-by" for="companyId" data-text="חיפוש לפי ח.פ.">חיפוש לפי ח.פ.</label>
                     </div>
                 </form>
             </div>

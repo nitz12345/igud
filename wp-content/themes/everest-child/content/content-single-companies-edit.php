@@ -63,13 +63,15 @@ if ( isset( $_POST['update-company'] ) && isset( $_POST['submit'] ) && ( $_POST[
 	}
 	
 	// Let WordPress handle the upload.
-	$img_id = media_handle_upload( 'logo_file', 0 );
+	$img_id = media_handle_upload( 'logo_file', get_the_ID() );
 	
-	if ( ! is_wp_error( $img_id ) ) {
-		update_field( 'field_5a81c416c9616', $img_id, get_the_ID() );
-	} elseif($_FILES['logo_file']['error'] === 4){
-		wp_delete_attachment( get_field('field_5a81c416c9616'), true);
-		update_field( 'field_5a81c416c9616', 0, get_the_ID() );
+	if($_POST['logo_changed'] === "1") {
+		if ( ! is_wp_error( $img_id ) ) {
+			update_field( 'field_5a81c416c9616', $img_id, get_the_ID() );
+		} elseif ( $_FILES['logo_file']['error'] === 4 ) {
+			wp_delete_attachment( get_field( 'field_5a81c416c9616' ), true );
+			update_field( 'field_5a81c416c9616', 0, get_the_ID() );
+		}
 	}
 	
 	if(!get_field('mail_after_publish')){
@@ -98,6 +100,7 @@ $current_terms = array_filter( array_map( function ( $term ) {
 	}
 }, get_the_terms( get_the_ID(), 'company_category' ) ) );
 $current_terms = current($current_terms);
+$isMobile = wp_is_mobile();
 ?>
 <article id="post-<?php the_ID(); ?>" <?php post_class( 'edit' ); ?>>
 	<div class="choose-background-image">
@@ -119,7 +122,7 @@ $current_terms = current($current_terms);
 			</div>
 		</div>
 	</div>
-	<form action="#" method="post" enctype="multipart/form-data" class="edit-company">
+	<form action="#" method="post" enctype="multipart/form-data" class="edit-company" data-company_post_id="<?php the_ID()?>">
 		<button name="submit" type="submit" value="submit" class="update-company elementor-button elementor-size-sm">
 			<?php echo get_field('mail_after_publish') ? 'עדכון' : 'פרסום'; ?>
 		</button>
@@ -141,6 +144,7 @@ $current_terms = current($current_terms);
 											 value="<?php acf_field_placeholder( 'company_name_en' ) ?>"
 											 placeholder="<?php acf_field_placeholder( 'company_name_en', 'English Company Name' ) ?>"
 											 style="max-width: 600px;margin: 0px auto;"></h2>
+						<input type="hidden" name="logo_changed" value="0">
 						<input type="file" name="logo_file" id="logo-file-input" style="position: absolute;right: 0;bottom: 40%;">
 						<div id="company-logo">
 							<?php if ( get_field( 'logo' ) ) { ?>
@@ -178,7 +182,7 @@ $current_terms = current($current_terms);
 						<img src="<?php echo get_stylesheet_directory_uri() ?>/assets/images/company-date.png">
 						<span>שנת יסוד: <input type="number" name="founded_date"
 																	 value="<?php acf_field_placeholder( 'founded_date' ) ?>"
-																	 placeholder="<?php acf_field_placeholder( 'founded_date', '1983' ) ?>"
+																	 placeholder="<?php acf_field_placeholder( 'founded_date', '0000' ) ?>"
 																	 style="max-width: 120px;display: inline;"></span>
 					</div>
 				</div>
@@ -254,7 +258,7 @@ $current_terms = current($current_terms);
 								טלפון
 							</div>
 							<div class="detail-content">
-								<input type="tel" name="phone" value="<?php acf_field_placeholder( 'phone' ) ?>"
+								<input class="required" type="tel" name="phone" value="<?php acf_field_placeholder( 'phone' ) ?>"
 											 placeholder="אנא הזן מס' טלפון">
 							</div>
 						</div>
@@ -273,7 +277,7 @@ $current_terms = current($current_terms);
 								כתובת
 							</div>
 							<div class="detail-content">
-								<input type="text" name="address" value="<?php the_field( 'address' ) ?>"
+								<input class="required" type="text" name="address" value="<?php the_field( 'address' ) ?>"
 											 placeholder="אנא הזן את כתובת החברה" style="width: 100%;">
 							</div>
 						</div>
@@ -449,7 +453,7 @@ $current_terms = current($current_terms);
 						} ?>
 						<div style="margin-bottom: 20px;">
 							<label for="facebook_page">עמוד הפייסבוק</label>
-							<input type="url" name="facebook_page" value="<?php echo $facebook_page ?>" placeholder="אנא הוסף את כתובת עמוד הפייסבוק של החברה">
+							<input type="url" name="facebook_page" value="<?php echo get_field( 'facebook_page' ) ?>" placeholder="אנא הוסף את כתובת עמוד הפייסבוק של החברה">
 						</div>
 						<div id="fb-root"></div>
 						<script>(function (d, s, id) {
@@ -491,7 +495,7 @@ $current_terms = current($current_terms);
 									<label for="staff_image_<?php echo $i ?>">בחר תמונה</label>
 									<input type="file" id="staff_image_<?php echo $i ?>" name="staff_image_<?php echo $i ?>"
 												 style="visibility: hidden;">
-									<div class="staff-image-wrapper edit-mode">
+									<div class="staff-image-wrapper edit-mode <?php echo $staff['staff_image'] ? '' : 'no-image' ?>">
 										<?php if ( $staff['staff_image'] ) { ?>
 											<a href="#" class="remove-staff-image"><i class="fa fa-times" aria-hidden="true"></i></a>
 											<?php echo wp_get_attachment_image( $staff['staff_image'], 'medium' ); ?>
@@ -525,7 +529,7 @@ $current_terms = current($current_terms);
 								<label for="staff_image_<?php echo $i ?>">בחר תמונה</label>
 								<input type="file" id="staff_image_<?php echo $i ?>" name="staff_image_<?php echo $i ?>"
 											 style="visibility: hidden;">
-								<div class="staff-image-wrapper">
+								<div class="staff-image-wrapper no-image">
 									<div class="pu-image-title">
                     <span class="name-title"><input type="text" id="staff_name_<?php echo $i ?>"
 																										name="staff_name_<?php echo $i ?>" placeholder="שם המנהל"></span>

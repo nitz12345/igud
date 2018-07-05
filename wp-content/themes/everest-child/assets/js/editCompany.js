@@ -7,10 +7,6 @@
 				scrollTop: scrollTop
 			}, 1000);
 		});
-
-		$('.update-company').click(function(){
-			$(this).props('disabled', true);
-		});
 		$(document).on('click', '#company-logo > span', function (e) {
 			$('[name="logo_file"]').click();
 		});
@@ -25,10 +21,12 @@
 				};
 
 				reader.readAsDataURL(this.files[0]);
+				$('[name="logo_changed"]').val("1");
 			}
 		});
 		$(document).on('click', '.remove-logo', function (e) {
 			e.preventDefault();
+			$('[name="logo_changed"]').val("1");
 			$('#logo-file-input').val('');
 			$('#company-logo').html('<span>לחץ כאן להוספת לוגו</span>');
 		});
@@ -47,16 +45,19 @@
 					$(' .staff-image-wrapper', el_parent).prepend("<img src='" + e.target.result + "'/>");
 					$(' .staff-image-wrapper', el_parent).prepend("<a href='#' class='remove-staff-image'>X</a>");
 					$(el_parent).find('.staff_image_change').val('1');
-				}
+				};
 
 				reader.readAsDataURL(this.files[0]);
+				$(' .staff-image-wrapper', el_parent).removeClass('no-image');
 			}
 		});
 
 		$(document).on('click', '.remove-staff-image', function (e) {
 			e.preventDefault();
-			$(this).closest('.staff-placeholders').find('.staff_image_change').val('1');
+			var el_parent = $(this).closest('.staff-placeholders');
+			$(el_parent).find('.staff_image_change').val('1');
 			$(this).parent().find('img').remove();
+			$(' .staff-image-wrapper', el_parent).addClass('no-image');
 			$(this).remove();
 		});
 
@@ -134,18 +135,43 @@
 		});
 
 		$('.edit-company').submit(function(e){
-			$('.border-red').removeClass('border-red');
-			$(' .required', this).each(function(){
-				if(!$(this).val()){
-					e.preventDefault();
-					$(this).addClass('border-red');
-					var scrollTop = $(this).offset().top - 90;
-					$('html, body').animate({
-						scrollTop: scrollTop
-					});
-					return false;
-				}
+			var el = $('.update-company');
+			var valid = true;
+			$(el).attr("disabled", "disabled");
+			$.ajax({
+				type: 'POST',
+				url: ajax_object.ajax_url,
+				data: {action: 'checkCompanyIdExistance', company_id: $("[name='company_id']").val(), company_post_id: $('.edit-company').attr('data-company_post_id')},
+				success: function (res) {
+					$(el).removeAttr("disabled");
+					console.log(res);
+					if(!res){
+						alert('ח.פ. החברה כבר קיים במערכת.');
+						$("[name='company_id']").addClass('border-red');
+						var scrollTop = $("[name='company_id']").offset().top - 90;
+						$('html, body').animate({
+							scrollTop: scrollTop
+						});
+						valid = false;
+					} else{
+						$('.border-red').removeClass('border-red');
+						$(' .required', this).each(function(){
+							if(!$(this).val()){
+								e.preventDefault();
+								$(this).addClass('border-red');
+								var scrollTop = $(this).offset().top - 90;
+								$('html, body').animate({
+									scrollTop: scrollTop
+								});
+								valid = false;
+							}
+						});
+					}
+				},
+				async: false
 			});
+			console.log(valid);
+			return valid;
 		});
 	});
 })(jQuery);

@@ -31,22 +31,6 @@ if ( have_posts() ) :
 				<?php endif; ?>
 			</div>
 			<?php $tags = get_the_tags(); if ( $tags ) : ?><div class="entry-tags"><?php the_tags( '', ' ' ); ?></div><?php endif; ?>
-			
-			<?php
-			// Previous/next post navigation.
-			echo pojo_get_post_navigation(
-				array(
-					'prev_text' => __( '&laquo; Previous', 'pojo' ),
-					'next_text' => __( 'Next &raquo;', 'pojo' ),
-				)
-			);
-			?>
-			
-			<?php comments_template( '', true ); ?>
-			
-			<footer>
-				<?php pojo_button_post_edit(); ?>
-			</footer>
 		</article>
 	<?php endwhile;
 else :

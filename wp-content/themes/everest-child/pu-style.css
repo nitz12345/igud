@@ -607,6 +607,7 @@ span.cubenum {
     align-items: center;
     justify-content: center;
     padding-bottom: 20px;
+    cursor: pointer;
 }
 .elementor img.company-logo {
     margin: 0 auto;
@@ -1002,7 +1003,7 @@ form.search-form button {
     background: #00003c;
     border-color: #00003c;
 }
-input#company, input#name {
+.search-by input {
     display: none;
 }
 form.search-form label {
@@ -1215,8 +1216,6 @@ img#tax-logo {
 @media (max-width: 767px) {
     .company_cat_details {
         width: 100%;
-        display: inline-block;
-        margin-right: 1%;
         position: relative;
         margin-bottom: 20px;
     }

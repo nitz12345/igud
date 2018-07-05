@@ -12,7 +12,7 @@
 			$('.load-more-companies').click(function(e){
 				e.preventDefault();
 				var el = this;
-				var offset = $('.companies-archive-wrapper .col-pu-5').length;
+				var offset = $('.companies-archive-wrapper .company-container').length;
 				var archive = $(this).attr('data-archive');
 				$.post({
 					url: ajax_object.ajax_url,
@@ -25,6 +25,14 @@
 					},
 					dataType: 'json'
 				});
+			});
+		}
+
+		if($('.company-container-full').length){
+			$('.company-container-full').click(function(e){
+				if($(e.target).hasClass('company-container-full')){
+					location.href = $(this).data('href');
+				}
 			});
 		}
 	});
