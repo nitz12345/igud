@@ -2,45 +2,68 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="914047c4-cae2-48b1-a92a-46931a70aedd" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/wp-content/themes/everest-child/assets/images/female.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/wp-content/themes/everest-child/assets/images/male.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/wp-content/themes/everest-child/assets/css/rtl.css" beforeDir="false" afterPath="$PROJECT_DIR$/wp-content/themes/everest-child/assets/css/rtl.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/wp-content/plugins/import-companies/import-companies.js" beforeDir="false" afterPath="$PROJECT_DIR$/wp-content/plugins/import-companies/import-companies.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/wp-content/plugins/import-companies/import-companies.php" beforeDir="false" afterPath="$PROJECT_DIR$/wp-content/plugins/import-companies/import-companies.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/wp-content/themes/everest-child/assets/css/responsive.css" beforeDir="false" afterPath="$PROJECT_DIR$/wp-content/themes/everest-child/assets/css/responsive.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/wp-content/themes/everest-child/assets/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/wp-content/themes/everest-child/assets/css/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/wp-content/themes/everest-child/assets/js/editCompany.js" beforeDir="false" afterPath="$PROJECT_DIR$/wp-content/themes/everest-child/assets/js/editCompany.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/wp-content/themes/everest-child/assets/js/functions.js" beforeDir="false" afterPath="$PROJECT_DIR$/wp-content/themes/everest-child/assets/js/functions.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/wp-content/themes/everest-child/assets/js/homepage.js" beforeDir="false" afterPath="$PROJECT_DIR$/wp-content/themes/everest-child/assets/js/homepage.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/wp-content/themes/everest-child/content/company-cats.php" beforeDir="false" afterPath="$PROJECT_DIR$/wp-content/themes/everest-child/content/company-cats.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/wp-content/themes/everest-child/content/content-single-companies-edit.php" beforeDir="false" afterPath="$PROJECT_DIR$/wp-content/themes/everest-child/content/content-single-companies-edit.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/wp-content/themes/everest-child/content/content-single-companies-view.php" beforeDir="false" afterPath="$PROJECT_DIR$/wp-content/themes/everest-child/content/content-single-companies-view.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/wp-content/themes/everest-child/custom-widgets.php" beforeDir="false" afterPath="$PROJECT_DIR$/wp-content/themes/everest-child/custom-widgets.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/wp-content/themes/everest-child/functions.php" beforeDir="false" afterPath="$PROJECT_DIR$/wp-content/themes/everest-child/functions.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/wp-content/themes/everest-child/loop/archive-companies.php" beforeDir="false" afterPath="$PROJECT_DIR$/wp-content/themes/everest-child/loop/archive-companies.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/wp-content/themes/everest-child/loop/page-createuser.php" beforeDir="false" afterPath="$PROJECT_DIR$/wp-content/themes/everest-child/loop/page-createuser.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/wp-content/themes/everest-child/loop/page-search-result.php" beforeDir="false" afterPath="$PROJECT_DIR$/wp-content/themes/everest-child/loop/page-search-result.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/wp-content/themes/everest-child/loop/single-companies.php" beforeDir="false" afterPath="$PROJECT_DIR$/wp-content/themes/everest-child/loop/single-companies.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/wp-content/themes/everest-child/loop/single-post.php" beforeDir="false" afterPath="$PROJECT_DIR$/wp-content/themes/everest-child/loop/single-post.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/wp-content/themes/everest-child/pu-style.css" beforeDir="false" afterPath="$PROJECT_DIR$/wp-content/themes/everest-child/pu-style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/wp-content/themes/everest-child/taxonomy-company_category.php" beforeDir="false" afterPath="$PROJECT_DIR$/wp-content/themes/everest-child/taxonomy-company_category.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/wp-content/themes/everest-child/titlebar.php" beforeDir="false" afterPath="$PROJECT_DIR$/wp-content/themes/everest-child/titlebar.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
-    <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FUSProjectUsageTrigger">
+    <session id="-1755169115">
+      <usages-collector id="statistics.lifecycle.project">
+        <counts>
+          <entry key="project.open.time.0" value="1" />
+          <entry key="project.opened" value="1" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.edit">
+        <counts>
+          <entry key="php" value="369" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.edit">
+        <counts>
+          <entry key="PHP" value="369" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.open">
+        <counts>
+          <entry key="php" value="3" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.open">
+        <counts>
+          <entry key="PHP" value="3" />
+        </counts>
+      </usages-collector>
+    </session>
+  </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="import-companies.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/wp-content/plugins/import-companies/import-companies.php">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/wp-content/themes/everest-child/taxonomy-company_category.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="285">
-              <caret line="19" column="33" lean-forward="true" selection-start-line="19" selection-start-column="33" selection-end-line="19" selection-end-column="33" />
-              <folding>
-                <element signature="e#6#189#0#PHP" expanded="true" />
-              </folding>
+            <state relative-caret-position="45">
+              <caret line="3" column="30" selection-start-line="3" selection-start-column="30" selection-end-line="3" selection-end-column="30" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/wp-content/themes/everest-child/loop/archive-companies.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="75">
+              <caret line="5" column="33" selection-start-line="5" selection-start-column="33" selection-end-line="5" selection-end-column="33" />
             </state>
           </provider>
         </entry>
@@ -57,22 +80,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>search_term</find>
-      <find>'relation' =&gt; 'AND'</find>
-      <find>$where</find>
-      <find>.company_cat_details</find>
-      <find>slicksli</find>
-      <find>slick</find>
-      <find>pu-top-companies</find>
-      <find>.page-id-63</find>
-      <find>required</find>
-      <find>עמוד הפיי</find>
-      <find>print_</find>
-      <find>company', 'ca</find>
-      <find>contracts</find>
-      <find>contracts-header contracts-row</find>
-      <find>header</find>
-      <find>#company-logo</find>
       <find>company-section-five</find>
       <find>id_number_callback</find>
       <find>print_section_info</find>
@@ -87,6 +94,22 @@
       <find>companies</find>
       <find>company-container-full</find>
       <find>open-sharing-options</find>
+      <find>pushtook</find>
+      <find>eyal@push</find>
+      <find>$current_terms</find>
+      <find>import_companies_handler</find>
+      <find>GF_XML_PLUGIN_ROOT_DIR</find>
+      <find>COMPANIES_EXPORT_PLUGIN_ROOT_DIR</find>
+      <find>;</find>
+      <find>search_area</find>
+      <find>.not-paid .company-archive-overlay</find>
+      <find>.company-container</find>
+      <find>.company-menu</find>
+      <find>pu-lea</find>
+      <find>$data</find>
+      <find>$paid</find>
+      <find>$manager</find>
+      <find>staff_</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -121,33 +144,34 @@
         <option value="$PROJECT_DIR$/wp-content/themes/everest-child/loop/single-conventions.php" />
         <option value="$PROJECT_DIR$/wp-content/themes/everest-child/page-login.php" />
         <option value="$PROJECT_DIR$/wp-content/themes/everest-child/assets/js/loginForm.js" />
-        <option value="$PROJECT_DIR$/wp-content/themes/everest-child/loop/archive-companies.php" />
         <option value="$PROJECT_DIR$/wp-content/themes/everest-child/loop/single-post.php" />
         <option value="$PROJECT_DIR$/wp-content/themes/everest-child/assets/js/editCompany.js" />
         <option value="$PROJECT_DIR$/wp-content/themes/everest-child/titlebar.php" />
-        <option value="$PROJECT_DIR$/wp-content/themes/everest-child/assets/js/homepage.js" />
-        <option value="$PROJECT_DIR$/wp-content/themes/everest-child/content/company-cats.php" />
         <option value="$PROJECT_DIR$/wp-content/themes/everest-child/loop/page-createuser.php" />
         <option value="$PROJECT_DIR$/wp-content/themes/everest-child/loop/single-companies.php" />
-        <option value="$PROJECT_DIR$/wp-content/themes/everest-child/pu-style.css" />
         <option value="$PROJECT_DIR$/wp-content/themes/everest-child/assets/css/rtl.css" />
         <option value="$PROJECT_DIR$/wp-content/themes/everest-child/content/content-single-companies-edit.php" />
         <option value="$PROJECT_DIR$/wp-content/themes/everest-child/loop/page-search-result.php" />
         <option value="$PROJECT_DIR$/wp-content/themes/everest-child/custom-widgets.php" />
-        <option value="$PROJECT_DIR$/wp-content/themes/everest-child/taxonomy-company_category.php" />
-        <option value="$PROJECT_DIR$/wp-content/themes/everest-child/assets/css/style.css" />
         <option value="$PROJECT_DIR$/wp-content/themes/everest-child/header.php" />
-        <option value="$PROJECT_DIR$/wp-content/themes/everest-child/assets/css/responsive.css" />
         <option value="$PROJECT_DIR$/wp-content/themes/everest-child/includes/import-companies.php" />
         <option value="$PROJECT_DIR$/wp-config.php" />
         <option value="$PROJECT_DIR$/wp-content/plugins/import-companies.php" />
         <option value="$PROJECT_DIR$/wp-content/plugins/import-companies/import-companies.css" />
-        <option value="$PROJECT_DIR$/wp-content/plugins/import-companies/import-companies.js" />
         <option value="$PROJECT_DIR$/wp-content/themes/everest-child/content/content-single-companies-view.php" />
-        <option value="$PROJECT_DIR$/wp-content/plugins/import-companies/import-companies.php" />
         <option value="$PROJECT_DIR$/wp-content/themes/everest-child/content/company-card.php" />
-        <option value="$PROJECT_DIR$/wp-content/themes/everest-child/assets/js/functions.js" />
         <option value="$PROJECT_DIR$/wp-content/themes/everest-child/functions.php" />
+        <option value="&lt;7b0ccdd5-3b61-4126-b238-7c4567825d96&gt;/wp-content/plugins/import-companies/export.csv" />
+        <option value="$PROJECT_DIR$/wp-content/plugins/import-companies/import-companies.js" />
+        <option value="$PROJECT_DIR$/wp-content/themes/everest-child/assets/js/functions.js" />
+        <option value="$PROJECT_DIR$/wp-content/themes/everest-child/content/company-cats.php" />
+        <option value="$PROJECT_DIR$/wp-content/themes/everest-child/pu-style.css" />
+        <option value="$PROJECT_DIR$/wp-content/themes/everest-child/assets/css/style.css" />
+        <option value="$PROJECT_DIR$/wp-content/themes/everest-child/assets/js/homepage.js" />
+        <option value="$PROJECT_DIR$/wp-content/themes/everest-child/assets/css/responsive.css" />
+        <option value="$PROJECT_DIR$/wp-content/plugins/import-companies/import-companies.php" />
+        <option value="$PROJECT_DIR$/wp-content/themes/everest-child/taxonomy-company_category.php" />
+        <option value="$PROJECT_DIR$/wp-content/themes/everest-child/loop/archive-companies.php" />
       </list>
     </option>
   </component>
@@ -157,15 +181,12 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="NodePackageJsonFileManager">
-    <packageJsonPaths />
-  </component>
   <component name="PhpWorkspaceProjectConfiguration">
     <include_path>
       <path value="$USER_HOME$/PhpstormProjects/woocommerce" />
     </include_path>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds">
     <option name="y" value="23" />
     <option name="width" value="1440" />
     <option name="height" value="877" />
@@ -176,7 +197,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -221,37 +241,13 @@
               <item name="wp-content" type="462c0819:PsiDirectoryNode" />
               <item name="themes" type="462c0819:PsiDirectoryNode" />
               <item name="everest-child" type="462c0819:PsiDirectoryNode" />
-              <item name="assets" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="havarot" type="b2602c69:ProjectViewProjectNode" />
-              <item name="havarot" type="462c0819:PsiDirectoryNode" />
-              <item name="wp-content" type="462c0819:PsiDirectoryNode" />
-              <item name="themes" type="462c0819:PsiDirectoryNode" />
-              <item name="everest-child" type="462c0819:PsiDirectoryNode" />
-              <item name="assets" type="462c0819:PsiDirectoryNode" />
-              <item name="js" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="havarot" type="b2602c69:ProjectViewProjectNode" />
-              <item name="havarot" type="462c0819:PsiDirectoryNode" />
-              <item name="wp-content" type="462c0819:PsiDirectoryNode" />
-              <item name="themes" type="462c0819:PsiDirectoryNode" />
-              <item name="everest-child" type="462c0819:PsiDirectoryNode" />
-              <item name="content" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="havarot" type="b2602c69:ProjectViewProjectNode" />
-              <item name="havarot" type="462c0819:PsiDirectoryNode" />
-              <item name="wp-content" type="462c0819:PsiDirectoryNode" />
-              <item name="themes" type="462c0819:PsiDirectoryNode" />
-              <item name="everest-child" type="462c0819:PsiDirectoryNode" />
               <item name="loop" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -329,38 +325,46 @@
       <workItem from="1529564099115" duration="2925000" />
       <workItem from="1529644767341" duration="89000" />
       <workItem from="1529646146344" duration="14869000" />
-      <workItem from="1530681214410" duration="19420000" />
+      <workItem from="1530681214410" duration="19596000" />
+      <workItem from="1530784139227" duration="15000" />
+      <workItem from="1530784166095" duration="7000" />
+      <workItem from="1531890886229" duration="193000" />
+      <workItem from="1531898176359" duration="8652000" />
+      <workItem from="1531979784315" duration="2496000" />
+      <workItem from="1532510991571" duration="456000" />
+      <workItem from="1535697463159" duration="2448000" />
+      <workItem from="1537343348632" duration="1874000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="166861000" />
+    <option name="totallyTimeSpent" value="183178000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-1" y="23" width="1440" height="877" extended-state="6" />
+    <frame x="0" y="23" width="1440" height="877" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
-      <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
-      <window_info anchor="bottom" id="File Transfer" order="7" weight="0.23205128" />
-      <window_info anchor="bottom" id="Version Control" order="7" />
-      <window_info anchor="bottom" id="Run" order="2" />
-      <window_info anchor="bottom" id="Terminal" order="7" weight="0.32948717" />
-      <window_info anchor="right" id="Remote Host" order="3" weight="0.20457797" />
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.20457797" />
-      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
-      <window_info anchor="right" id="Database" order="3" />
-      <window_info anchor="bottom" id="Find" order="1" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Run" order="2" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="8" weight="0.32948717" />
+      <window_info anchor="bottom" id="File Transfer" order="9" weight="0.23184714" />
+      <window_info anchor="bottom" id="Terminal" order="10" weight="0.28333333" />
+      <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
+      <window_info anchor="bottom" id="Database Changes" order="12" show_stripe_button="false" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Remote Host" order="3" weight="0.20457797" />
+      <window_info anchor="right" id="Database" order="4" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -370,19 +374,7 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="WordPressConfiguration" doNotAskAgain="true" />
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <option name="time" value="1" />
-    </breakpoint-manager>
-  </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/wp-content/themes/everest/header.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-103">
-          <caret line="18" column="32" selection-start-line="18" selection-start-column="32" selection-end-line="18" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/wp-content/themes/everest-child/custom_widgets.php" />
     <entry file="file://$PROJECT_DIR$/wp-content/plugins/benner-elementor-widgets/elementor-custom-element.php" />
     <entry file="file://$PROJECT_DIR$/wp-content/plugins/benner-elementor-widgets/my-widget.php" />
@@ -498,20 +490,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/wp-content/themes/everest-child/assets/js/homepage.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="5" column="29" selection-start-line="5" selection-start-column="18" selection-end-line="5" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/wp-content/themes/everest-child/pu-style.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="191">
-          <caret line="1217" column="20" selection-start-line="1217" selection-start-column="20" selection-end-line="1217" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/wp-content/themes/everest-child/loop/page-createuser.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="495">
@@ -523,13 +501,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
           <caret line="19" column="13" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/wp-content/themes/everest-child/content/company-cats.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="140">
-          <caret line="15" column="60" selection-start-line="15" selection-start-column="60" selection-end-line="15" selection-end-column="60" />
         </state>
       </provider>
     </entry>
@@ -547,31 +518,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/wp-content/themes/everest-child/assets/css/responsive.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="522">
-          <caret line="99" column="13" selection-start-line="99" selection-start-column="13" selection-end-line="99" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/wp-content/themes/everest-child/footer.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="120">
           <caret line="8" column="74" selection-start-line="8" selection-start-column="74" selection-end-line="8" selection-end-column="74" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/wp-content/themes/everest-child/taxonomy-company_category.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-373">
-          <caret line="18" column="31" lean-forward="true" selection-start-line="18" selection-start-column="31" selection-end-line="18" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/wp-content/themes/everest-child/assets/css/style.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="356">
-          <caret line="751" column="17" selection-start-line="751" selection-start-column="17" selection-end-line="751" selection-end-column="17" />
         </state>
       </provider>
     </entry>
@@ -582,13 +532,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/wp-content/themes/everest-child/includes/import-companies.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="16" column="26" lean-forward="true" selection-end-line="57" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/wp-content/themes/everest-child/includes/import-companies.php" />
     <entry file="file://$PROJECT_DIR$/wp-config.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="312">
@@ -622,13 +566,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/wp-content/plugins/import-companies/import-companies.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret lean-forward="true" selection-end-line="40" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/wp-content/plugins/import-companies/import-companies.css" />
     <entry file="file://$PROJECT_DIR$/wp-content/themes/everest-child/content/content-single-companies-edit.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="179">
@@ -663,13 +601,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/wp-content/themes/everest-child/loop/archive-companies.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="27">
-          <caret line="13" column="28" lean-forward="true" selection-start-line="13" selection-start-column="28" selection-end-line="13" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/wp-content/themes/everest-child/functions.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="201">
@@ -681,33 +612,83 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="74">
           <caret line="11" column="94" selection-start-line="11" selection-start-column="57" selection-end-line="11" selection-end-column="94" />
-          <folding>
-            <element signature="n#style#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/PhpstormProjects/peleteam/httpdocs/cms/wp-content/plugins/gfxmlexport/gfxmlexport.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2627">
+          <caret line="18" column="72" selection-start-line="18" selection-start-column="72" selection-end-line="18" selection-end-column="72" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/wp-content/themes/everest-child/content/company-cats.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="19" column="83" selection-start-line="19" selection-start-column="83" selection-end-line="19" selection-end-column="83" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/wp-content/themes/everest-child/pu-style.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15060">
+          <caret line="1004" column="24" selection-start-line="1004" selection-start-column="24" selection-end-line="1004" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/wp-content/themes/everest-child/assets/css/style.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="8055">
+          <caret line="537" column="13" selection-start-line="537" selection-start-column="13" selection-end-line="537" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/wp-content/themes/everest-child/assets/css/responsive.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="558">
+          <caret line="168" column="26" selection-start-line="168" selection-start-column="26" selection-end-line="168" selection-end-column="26" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/wp-content/themes/everest-child/assets/js/functions.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="35" selection-start-line="4" selection-start-column="35" selection-end-line="4" selection-end-column="35" />
+        <state relative-caret-position="15">
+          <caret line="1" column="33" selection-start-line="1" selection-start-column="33" selection-end-line="1" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/wp-content/themes/everest-child/assets/js/homepage.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="17" column="25" selection-start-line="17" selection-start-column="25" selection-end-line="17" selection-end-column="25" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/wp-content/plugins/import-companies/import-companies.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="15" column="37" selection-start-line="15" selection-start-column="37" selection-end-line="15" selection-end-column="37" />
+        <state relative-caret-position="510">
+          <caret line="34" column="37" selection-start-line="34" selection-start-column="37" selection-end-line="34" selection-end-column="37" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/wp-content/plugins/import-companies/import-companies.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="19" column="33" lean-forward="true" selection-start-line="19" selection-start-column="33" selection-end-line="19" selection-end-column="33" />
-          <folding>
-            <element signature="e#6#189#0#PHP" expanded="true" />
-          </folding>
+        <state relative-caret-position="374">
+          <caret line="290" column="37" selection-start-line="290" selection-start-column="37" selection-end-line="290" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/wp-content/themes/everest-child/taxonomy-company_category.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="3" column="30" selection-start-line="3" selection-start-column="30" selection-end-line="3" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/wp-content/themes/everest-child/loop/archive-companies.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="5" column="33" selection-start-line="5" selection-start-column="33" selection-end-line="5" selection-end-column="33" />
         </state>
       </provider>
     </entry>

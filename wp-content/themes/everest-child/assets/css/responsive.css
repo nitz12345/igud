@@ -25,9 +25,6 @@
 		padding-left: 0;
 		padding-right: 0;
 	}
-	.pu-leading-companies-content .col-pu-5{
-		width: 100%;
-	}
 	.elementor-grid.elementor-grid-3 .elementor-grid-item{
 		width: 100%;
 	}
@@ -92,11 +89,87 @@
 	body.rtl .company-menu-info .pull-left{
 		float: none !important;
 	}
-	.company-menu{
-		display: none;
+	ul.company-menu {
+		margin-bottom: 15px;
+	}
+	ul.company-menu li {
+		margin-left: 8px;
+	}
+	.company-menu li a {
+		font-size: 16px;
 	}
 	.detail-title, .detail-content{
 		display: block;
 		width: 100%;
+	}
+	.col-pu-5 {
+		width: 100%;
+		float: none;
+		margin-bottom: 15px;
+	}
+	.col-pu-5 .not-paid:last-child {
+		margin-bottom: 0;
+	}
+	.company-container {
+		float: none;
+	}
+	.page-id-127 #page-header .title-primary span:before,
+	.page-id-127 #page-header .title-primary span:after {
+		display: none;
+	}
+	.homepage-list-grid.slick-slider {
+		width: 100%;
+		margin-right: 0;
+		overflow: hidden;
+	}
+	.search-form .row {
+		margin: 0;
+	}
+	.contracts-row, .contract-details-row {
+		margin-bottom: 15px;
+	}
+	.companies-archive-wrapper .row {
+		margin: 0;
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+		flex-wrap: wrap;
+	}
+	.companies-archive-wrapper .row .col-pu-5 {
+		width: 50%;
+	}
+	.row.managers,
+	.row.gallery-images,
+	.row.pu-more-companies,
+	.pu-leading-companies-content {
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+		flex-wrap: wrap;
+	}
+	.row.managers .col-md-3 {
+		width: 25%;
+		margin-bottom: 20px;
+	}
+	.row.gallery-images .col-md-3,
+	.row.gallery-images .col-md-6,
+	.row.pu-more-companies .col-md-3,
+	.pu-leading-companies-content .col-pu-5 {
+		width: 50%;
+	}
+	.row.managers .col-md-3 .pu-image-title {
+		position: relative;
+	}
+	.row.managers .staff-placeholders.view-mode {
+		height: 200px;
+	}
+}
+
+@media screen and (max-width: 400px) {
+	.row.managers .col-md-3 {
+		width: 50%;
+	}
+	.row.managers .staff-placeholders.view-mode {
+		height: auto;
 	}
 }

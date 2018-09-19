@@ -994,7 +994,20 @@ form.search-form input[name="search_term"] {
 .adv-search {
     margin-bottom: 10px;
 }
-form.search-form select {
+.select-wrapper {
+	position: relative;
+}
+.select-wrapper i {
+	position: absolute;
+	left: 15px;
+	top: calc(50% - 12px);
+	font-size: 24px;
+	pointer-events: none;
+}
+.select-wrapper select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
     padding: 15px 10px;
 }
 form.search-form button {

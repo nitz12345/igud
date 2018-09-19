@@ -7,6 +7,10 @@
  * License: A "Slug" license name e.g. GPL12
  */
 
+if ( ! defined( 'COMPANIES_EXPORT_PLUGIN_ROOT_DIR' ) ) {
+	define( 'COMPANIES_EXPORT_PLUGIN_ROOT_DIR', plugin_dir_path( __FILE__ ) );
+}
+
 class MySettingsPage
 {
 	/**
@@ -37,7 +41,7 @@ class MySettingsPage
 		// This page will be under "Settings"
 		add_options_page(
 			'Settings Admin',
-			'ייבוא חברות',
+			'ייבוא וייצוא חברות',
 			'manage_options',
 			'import-companies-admin',
 			array( $this, 'create_admin_page' )
@@ -53,19 +57,22 @@ class MySettingsPage
 		$this->options = get_option( 'my_option_name' );
 		?>
 		<style>
-			.import-companies-text{
+			.import-companies-text,
+			.export-companies-text{
 				display: none;
 				text-align: center;
 				font-size: 50px;
 			}
-			.import-companies-spinner {
+			.import-companies-spinner,
+			.export-companies-spinner{
 				margin: 50px auto 0;
 				width: 70px;
 				text-align: center;
 				display: none;
 			}
 			
-			.import-companies-spinner > div {
+			.import-companies-spinner > div,
+			.export-companies-spinner > div {
 				width: 18px;
 				height: 18px;
 				background-color: #333;
@@ -76,12 +83,14 @@ class MySettingsPage
 				animation: sk-bouncedelay 1.4s infinite ease-in-out both;
 			}
 			
-			.import-companies-spinner .bounce1 {
+			.import-companies-spinner .bounce1,
+			.export-companies-spinner .bounce1 {
 				-webkit-animation-delay: -0.32s;
 				animation-delay: -0.32s;
 			}
 			
-			.import-companies-spinner .bounce2 {
+			.import-companies-spinner .bounce2,
+			.export-companies-spinner .bounce2 {
 				-webkit-animation-delay: -0.16s;
 				animation-delay: -0.16s;
 			}
@@ -122,14 +131,19 @@ class MySettingsPage
 				<p>אנא בחר קטגוריה ראשית
 					<select name="category" id="category-select">
 						<option value="-1" selected>אנא בחר קטגוריה</option>
-						<?php foreach ( $terms as $term ) {
-							$selected = ( $term->term_id == $current_terms->term_id ) ? "selected" : "";
-							echo $term->term_id . " " . $current_terms->term_id; ?>
-							<option value="<?php echo $term->term_id ?>" <?php echo $selected ?>><?php echo $term->name ?></option>
+						<?php foreach ( $terms as $term ) { ?>
+							<option value="<?php echo $term->term_id ?>"><?php echo $term->name ?></option>
 						<?php } ?>
 					</select>
 				</p>
 				<button class="button button-primary" type="submit">טען קובץ</button>
+			</form>
+		</div>
+		<div class="wrap export">
+			<h1>ייצוא חברות</h1>
+			<form method="post" action="#" id="export-companies">
+				<input type="hidden" name="action" value="export_companies_handler">
+				<button class="button button-primary" type="submit">ייצא חברות</button>
 			</form>
 		</div>
 		<?php
@@ -229,3 +243,61 @@ function import_companies_handler(){
 }
 add_action( 'wp_ajax_import_companies_handler', 'import_companies_handler' );
 add_action( 'wp_ajax_nopriv_import_companies_handler', 'import_companies_handler' );
+
+function export_companies_handler(){
+	$filename = wp_upload_dir()['basedir'].'/export.csv';
+	header('Content-Type: text/csv; charset=utf-8');
+	header('Content-Disposition: attachment; filename='.$filename);
+	mb_internal_encoding('UTF-16');
+	$line_break = " \r\n";
+	$data = array(
+		  "ח.פ.,טלפון,אימייל,שם החברה,קטגוריות,תחומי פעילות,עסק מקודם,מספר צפיות,עסק משלם,מנהל 1,מנהל 2,מנהל 3,מנהל 4,פקס,מיקוד,כתובת,דירקטורים,בעלי מניות",
+	);
+	
+	$args = array(
+		'post_type' => 'companies',
+		'posts_per_page' => -1,
+		'orderby' => 'title',
+		'order' => 'ASC',
+	);
+	
+	foreach(get_posts($args) as $company) {
+		$postId = $company->ID;
+		$id = get_field('company_id', $postId);
+		$phone = get_field('phone', $postId);
+		$companyEmail = get_field('company_email', $postId);
+		$title = addslashes(get_the_title($postId));
+		$allCategories = get_the_terms( $company, 'company_category' );
+		$categoriesArr = [];
+		$subCategoriesArr = [];
+		foreach ( $allCategories as $cat ) {
+			if($cat->parent) {
+				$subCategoriesArr[] = str_replace(',', '', $cat->name);
+			} else {
+				$categoriesArr[] = str_replace(',', '', $cat->name);
+			}
+		}
+		$categories = implode(' | ', $categoriesArr);
+		$subCategories = implode(' | ', $subCategoriesArr);
+		$promoted = get_field('promoted', $postId) ? "כן" : "לא";
+		$views = get_field('views_count', $postId);
+		$paid = get_field( 'company_user' ) ? "כן" : "לא";
+		$manager1 = get_field('staff_1', $postId)['staff_name'] . ". תפקיד: " . get_field('staff_1', $postId)['staff_title'];
+		$manager2 = get_field('staff_2', $postId)['staff_name'] . ". תפקיד: " . get_field('staff_2', $postId)['staff_title'];
+		$manager3 = get_field('staff_3', $postId)['staff_name'] . ". תפקיד: " . get_field('staff_3', $postId)['staff_title'];
+		$manager4 = get_field('staff_4', $postId)['staff_name'] . ". תפקיד: " . get_field('staff_4', $postId)['staff_title'];
+		$fax = get_field('company_fax', $postId);
+		$postcode = get_field('postcode', $postId);
+		$address = str_replace(',', '', get_field('address', $postId));
+		$directors = str_replace(',', ' |', get_field('directors', $postId));
+		$options_details = str_replace(',', ' |', get_field('options_details', $postId));
+		$data[] = "$id,$phone,$companyEmail,$title,$categories,$subCategories,$promoted,$views,$paid,$manager1,$manager2,$manager3,$manager4,$fax,$postcode,$address,$directors,$options_details";
+	}
+	
+	$output = "\xEF\xBB\xBF".implode($line_break, $data);
+	file_put_contents($filename, $output);
+	echo wp_upload_dir()['baseurl'].'/export.csv';
+	die();
+}
+add_action( 'wp_ajax_export_companies_handler', 'export_companies_handler' );
+add_action( 'wp_ajax_nopriv_export_companies_handler', 'export_companies_handler' );

@@ -1,6 +1,6 @@
 (function($){
 	$(document).ready(function(){
-		if($('.open-sharing-options').length){
+		if($('.open-sharing-options').length) {
 			$('.open-sharing-options').click(function (e) {
 				e.preventDefault();
 				$(this).closest('.pull-right').toggleClass('active');

@@ -16,18 +16,21 @@
                             <input type="text" name="search_term" placeholder="חיפוש חופשי">
                         </div>
                         <div class="col-md-3">
-                            <select name="search_area">
-                                <option value="0">בחר איזור חיפוש</option>
-                                <?php
-                                $areas = get_terms(array(
-	                                'taxonomy' => 'company_area',
-	                                'hide_empty' => false
-                                ));
-                                foreach ($areas as $area){
-                                    echo '<option value="'.$area->term_id.'">'.$area->name.'</option>';
-                                }
-                                ?>
-                            </select>
+							<div class="select-wrapper">
+								<i class="fa fa-caret-down" aria-hidden="true"></i>
+								<select name="search_area">
+									<option value="0">בחר איזור חיפוש</option>
+									<?php
+									$areas = get_terms(array(
+										'taxonomy' => 'company_area',
+										'hide_empty' => false
+									));
+									foreach ($areas as $area){
+										echo '<option value="'.$area->term_id.'">'.$area->name.'</option>';
+									}
+									?>
+								</select>
+							</div>
                         </div>
                         <div class="col-md-2">
                             <button type="submit"><i class="fa fa-search"></i></button>
